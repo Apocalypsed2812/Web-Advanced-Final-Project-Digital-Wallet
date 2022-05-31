@@ -10,6 +10,7 @@ const jwt = require("jsonwebtoken");
 const credentials = require("../../credentials");
 const checkLogin = require('../models/CheckLogin')
 const block_account = require('../../util/block_account');
+const { mailHost, mailUser, mailPass, mailPort } = process.env;
 
 class AccountController{
 
@@ -307,12 +308,12 @@ class AccountController{
 function sendMail(email, username, password) {
     //Tiến hành gửi mail, nếu có gì đó bạn có thể xử lý trước khi gửi mail
     var transporter =  nodemailer.createTransport({ // config mail server
-        host: 'smtp.gmail.com',
-        port: 465,
+        host: mailHost,
+        port: mailPort,
         //secure: true,
         auth: {
-            user: 'phamhuynhanhtien123@gmail.com', //Tài khoản gmail vừa tạo
-            pass: 'anhtien2812' //Mật khẩu tài khoản gmail vừa tạo
+            user: mailUser, //Tài khoản gmail vừa tạo
+            pass: mailPass //Mật khẩu tài khoản gmail vừa tạo
         },
         tls: {
             // do not fail on invalid certs
@@ -325,7 +326,7 @@ function sendMail(email, username, password) {
                     <p>Password của bạn là ${password} </p> 
                     <p>Bạn đã có thể tiến hành đăng nhập và đổi mật khẩu</p>`;
     var mainOptions = { // thiết lập đối tượng, nội dung gửi mail
-        from: 'phamhuynhanhtien123@gmail.com',
+        from: mailUser,
         to: email,
         subject: 'Gửi Username và Password cho ví điện tử',
         text: content,
@@ -347,12 +348,12 @@ function sendMail(email, username, password) {
 function sendMailOTP(email, code, type) {
     //Tiến hành gửi mail, nếu có gì đó bạn có thể xử lý trước khi gửi mail
     var transporter =  nodemailer.createTransport({ // config mail server
-        host: 'smtp.gmail.com',
-        port: 465,
+        host: mailHost,
+        port: mailPort,
         secure: true,
         auth: {
-            user: 'phamhuynhanhtien123@gmail.com', //Tài khoản gmail vừa tạo
-            pass: 'anhtien2812' //Mật khẩu tài khoản gmail vừa tạo
+            user: mailUser, //Tài khoản gmail vừa tạo
+            pass: mailPass //Mật khẩu tài khoản gmail vừa tạo
         },
         tls: {
             // do not fail on invalid certs
@@ -366,7 +367,7 @@ function sendMailOTP(email, code, type) {
                         <p>Thời hạn nhập OTP là 1 phút</p>
                     </div>`;
     var mainOptions = { // thiết lập đối tượng, nội dung gửi mail
-        from: 'phamhuynhanhtien123@gmail.com',
+        from: mailUser,
         to: email,
         subject: 'Gửi OTP để lấy lại mật khẩu',
         text: content,
