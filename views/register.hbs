@@ -1,0 +1,47 @@
+
+    <div class="login">
+        <div class="login-container">
+            <form action="/register" method="POST" enctype="multipart/form-data">
+                <h1 class="login-heading">Register</h1>
+                <div class="form-group">
+                    <input type="text" name="phone" class="form-input" placeholder="Phone number" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-input" placeholder="Email address" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="name" class="form-input" placeholder="Full name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="address" class="form-input" placeholder="Address" required>
+                </div>
+                <div class="form-group">
+                    <label for="" class="form-label">Date of birth</label>
+                    <input type="date" name="dob" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="" class="form-label">Identity card front image</label>
+                    <input type="file" name="before" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="" class="form-label">Identity card back image</label>
+                    <input type="file" name="after" class="form-input" required>
+                </div>
+                <button class="btn-pri" type="submit" name="btn_register">
+                    Register
+                </button>
+                <p class="login-register">Already have an account? <br> <a href="/login">Login now!</a> </p>
+            </form>
+        </div>
+    </div>
+<div class="register_display_toast">
+    {{#if error}}
+        <input type="hidden" id="check_toast" value="0">
+    {{/if}}
+</div>
+
+<div class="register_display_toast_date">
+    {{#if error_date}}
+        <input type="hidden" id="check_toast_date" value="0">
+    {{/if}}
+</div>

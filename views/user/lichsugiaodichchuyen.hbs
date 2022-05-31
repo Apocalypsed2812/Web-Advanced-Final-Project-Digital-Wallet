@@ -1,0 +1,92 @@
+
+    <div class="container app-containter">
+        {{#if account_cxm}}
+        {{> headers/headerUserTemp}}
+        {{/if}}
+        {{#if account_dxm}}
+        {{> headers/headerUser}}
+        {{/if}}
+        
+        <section class="account">
+            <h1>Lịch sử giao dịch</h1>
+            <div class="tabs5">
+                <a href="/user/lichsugiaodichnap" class="tab-item">Nạp tiền</a>
+                <a href="/user/lichsugiaodichrut" class="tab-item">Rút tiền</a>
+                <a href="/user/lichsugiaodichchuyen" class="tab-item active">Chuyển tiền</a>
+                <a href="/user/lichsugiaodichmua" class="tab-item">Mua thẻ</a>
+            </div>
+            <div class="table">
+                <div class="table__header">
+                    <span>
+                        Người nhận
+                    </span>
+                    <span>
+                        Thời gian
+                    </span>
+                    <span>
+                        Ghi Chú
+                    </span>
+                    <span>
+                        Trạng thái
+                    </span>
+                    <span>
+                        Số Tiền
+                    </span>
+                </div>
+                <div class="table__list">
+                    {{#each transaction}}
+                    <div class="table__item viewChuyenTien" data-date="{{format_date createdAt}}" data-id="{{_id}}" data-money="{{money}}" data-type="{{type}}" data-status="{{status}}" data-number_card="{{number_card}}" data-note="{{note}}" data-phone="{{phone}}" data-receiver="{{receiver}}" data-fee="{{fee}}" data-userpay="{{userpay}}" data-total="{{total}}">
+                        <span>{{receiver}}</span>
+                        <span>{{format_date createdAt}}</span>
+                        <span>{{note}}</span>
+                        <span>
+                            <span class="status status__{{status}}">{{status}}</span>
+                        </span>
+                        <span class="amount amount__decrease">- {{ change_number money}} vnđ</span>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+        </section>
+
+        <div id="view-chuyentien" class="modal fade" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xem lịch sử giao dịch</h5>
+                    <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <section class="profile">
+                        <div class="profile-content">
+                            <div class="profile-group">
+                                <div class="profile-item"><strong> Người gửi:</strong> <span id="sender_tran_view_transfer_user"></span> </div>
+                                <div class="profile-item"><strong> Người nhận:</strong> <span id="receiver_tran_view_transfer_user"></span> </div>
+                                <div class="profile-item"><strong> Thời gian:</strong> <span id="date_tran_view_transfer_user"></span> </div>
+                                <div class="profile-item"><strong> Ghi chú:</strong> <span id="note_tran_view_transfer_user"></span> </div>
+                                <div class="profile-item"><strong> Số tiền:</strong> <span id="money_tran_view_transfer_user"></span> </div>
+                                <div class="profile-item"><strong> Phí:</strong> <span id="fee_tran_view_transfer_user"></span> </div>
+                                <div class="profile-item"><strong> Tổng cộng:</strong> <span id="total_tran_view_transfer_user"></span> </div>
+                                <div class="profile-item"><strong> Loại giao dịch:</strong> <span id="type_tran_view_transfer_user"></span> </div>
+                                <div class="profile-item"><strong> Trạng thái:</strong> <span id="status_tran_view_transfer_user"></span> </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <div type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let btnToggleOption = document.querySelector('.btn-option-header')
+        btnToggleOption.onclick = (e) => {
+            let parent = btnToggleOption.parentNode
+            let menu = parent.querySelector('.header-option-menu')
+            menu.classList.toggle("active")
+        }
+    </script>

@@ -1,0 +1,131 @@
+
+    <div class="container app-containter">
+        {{> headers/headerAdmin}}
+        <section class="account">
+            <h1>Phê duyệt giao dịch</h1>
+            <div class="tabs5">
+                <a href="/admin/pheduyetruttien" class="tab-item">Rút tiền</a>
+                <a href="/admin/pheduyetchuyentien" class="tab-item active">Chuyển tiền</a>
+            </div>
+
+            <div class="table">
+                <div class="table__header">
+                    <span>
+                        Người gửi
+                    </span>
+                    <span>
+                        Người nhận
+                    </span>
+                    <span>
+                        Thời gian
+                    </span>
+                    <span>
+                        Ghi Chú
+                    </span>
+                    <span>
+                        Số Tiền
+                    </span>
+                </div>
+                <div class="table__list">
+                    {{#each transaction}}
+                    <div class="table__item viewPheDuyetChuyenTien" data-date="{{format_date createdAt}}" data-id="{{_id}}" data-money="{{money}}" data-type="{{type}}" data-status="{{status}}" data-number_card="{{number_card}}" data-note="{{note}}" data-phone="{{phone}}" data-receiver="{{receiver}}" data-fee="{{fee}}" data-userpay="{{userpay}}" data-total="{{total}}">
+                        <span>{{phone}}</span>
+                        <span>{{receiver}}</span>
+                        <span>{{format_date createdAt}}</span>
+                        <span>{{note}}</span>
+                        <span class="amount">{{ change_number money}} vnđ</span>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+        </section>
+
+    <div id="view-pheduyet-chuyentien" class="modal fade" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xem lịch sử giao dịch</h5>
+                    <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <section class="profile">
+                        <div class="profile-content">
+                            <div class="profile-group">
+                                <div class="profile-item"><strong> Người gửi:</strong> <span id="sender_tran_view_transfer"></span> </div>
+                                <div class="profile-item"><strong> Người nhận:</strong> <span id="receiver_tran_view_transfer"></span> </div>
+                                <div class="profile-item"><strong> Thời gian:</strong> <span id="date_tran_view_transfer"></span> </div>
+                                <div class="profile-item"><strong> Ghi chú:</strong> <span id="note_tran_view_transfer"></span> </div>
+                                <div class="profile-item"><strong> Số tiền:</strong> <span id="money_tran_view_transfer"></span> </div>
+                                <div class="profile-item"><strong> Phí:</strong> <span id="fee_tran_view_transfer"></span> </div>
+                                <div class="profile-item"><strong> Tổng cộng:</strong> <span id="total_tran_view_transfer"></span> </div>
+                                <div class="profile-item"><strong> Loại giao dịch:</strong> <span id="type_tran_view_transfer"></span> </div>
+                                <div class="profile-item"><strong> Trạng thái:</strong> <span id="status_tran_view_transfer"></span> </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <div type="button" class="btn btn-outline-success" data-dismiss="modal" id="btn_accept_chuyen">Đồng ý</div>
+                    <div type="button" class="btn btn-outline-danger" data-dismiss="modal" id="btn_denied_chuyen">Từ chối</div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div id="confirm-accept-chuyen" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Xác nhận đồng ý chuyển tiền</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Bạn có chắc rằng muốn cho tài khoản <strong id="account-name-rut"></strong> chuyển tiền trên 5 triệu?
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <input type= "hidden" name="phone_chuyen" id="phone_chuyen" value="">
+                    <input type= "hidden" name="money_chuyen" id="money_chuyen" value="">
+                    <input type= "hidden" name="fee_chuyen" id="fee_chuyen" value="">
+                    <input type= "hidden" name="receiver_chuyen" id="receiver_chuyen" value="">
+                    <input type= "hidden" name="userpay_chuyen" id="userpay_chuyen" value="">
+                    <button data-id= "???" id="btn-chuyen-confirm" type="button" class="btn btn-primary">Đồng ý</button>
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Đóng</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="confirm-denied-chuyen" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Xác nhận từ chối chuyển tiền</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Bạn có chắc rằng muốn từ chối tài khoản <strong id="account-name-rut"></strong> chuyển tiền trên 5 triệu?
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button data-id= "???" id="btn-chuyen-confirm-denied" type="button" class="btn btn-primary">Đồng ý</button>
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Đóng</button>
+                </div>
+
+            </div>
+        </div>
+    </div>

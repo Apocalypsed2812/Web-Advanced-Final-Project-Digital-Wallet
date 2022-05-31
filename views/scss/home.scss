@@ -1,0 +1,108 @@
+.home {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 24px;
+    &-right {
+        &-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        &-container {
+            width: 100%;
+            height: fit-content;
+            background-color: #22bdff;
+            border-radius: 24px;
+            padding: 26px;
+            color: white;
+        }
+    }
+    &-mycard {
+        &-title {
+            font-size: 15px;
+        }
+        &-content {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 24px;
+        }
+        &-content:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &-header {
+        background-color: #4162ff;
+        padding: 26px;
+        border-radius: 32px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &-content {
+            flex: 1;
+        }
+        &-image {
+            width: 250px;
+        }
+    }
+
+    &-list {
+        margin-top: 32px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        align-items: center;
+    }
+    &-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 16px;
+        width: 150px;
+        height: 150px;
+        background-color: $secondaryColor;
+        border-radius: 20px;
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+        margin-left: auto;
+        margin-right: auto;
+        &:hover {
+            text-decoration: none;
+            color: white;
+            opacity: 0.8;
+        }
+        & h6 {
+            text-align: center;
+        }
+        & ion-icon {
+            font-size: 40px;
+        }
+    }
+}
+@media (max-width: 1000px) {
+    .home {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+@media (max-width: 740px) {
+    .home {
+        display: flex;
+        flex-direction: column-reverse;
+        &-list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+@media (max-width: 638px) {
+    .home {
+        &-header {
+            flex-direction: column;
+            &-content {
+                text-align: center;
+            }
+        }
+    }
+}

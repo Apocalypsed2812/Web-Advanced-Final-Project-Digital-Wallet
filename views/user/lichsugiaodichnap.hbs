@@ -1,0 +1,75 @@
+
+    <div class="container app-containter">
+        {{#if account_cxm}}
+        {{> headers/headerUserTemp}}
+        {{/if}}
+        {{#if account_dxm}}
+        {{> headers/headerUser}}
+        {{/if}}
+        
+        <section class="account">
+            <h1>Lịch sử giao dịch</h1>
+            <div class="tabs5">
+                <a href="/user/lichsugiaodichnap" class="tab-item active">Nạp tiền</a>
+                <a href="/user/lichsugiaodichrut" class="tab-item">Rút tiền</a>
+                <a href="/user/lichsugiaodichchuyen" class="tab-item">Chuyển tiền</a>
+                <a href="/user/lichsugiaodichmua" class="tab-item">Mua thẻ</a>
+            </div>
+            <div class="table">
+                <div class="table__header">
+                    <span>
+                        Số thẻ
+                    </span>
+                    <span>
+                        Thời gian
+                    </span>
+                    <span>
+                        Trạng Thái
+                    </span>
+                    <span>
+                        Số Tiền
+                    </span>
+                </div>
+                <div class="table__list">
+                    {{#each transaction}}
+                    <div class="table__item viewNapTien" data-id="{{_id}}" data-date="{{format_date createdAt}}" data-money="{{money}}" data-type="{{type}}" data-status="{{status}}" data-number_card="{{number_card}}">
+                        <span>{{number_card}}</span>
+                        <span>{{format_date createdAt}}</span>
+                        <span>
+                            <span class="status status__success">Thành Công</span>
+                        </span>
+                        <span class="amount amount__increase">+ {{ change_number money}} vnđ</span>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </section>
+
+        <div id="view-naptien" class="modal fade" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Xem lịch sử giao dịch</h5>
+                        <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <section class="profile">
+                            <div class="profile-content">
+                                <div class="profile-group">
+                                    <div class="profile-item"><strong> Số thẻ:</strong> <span id="number_card_tran_view"></span> </div>
+                                    <div class="profile-item"><strong> Thời gian:</strong> <span id="date_tran_view"></span> </div>
+                                    <div class="profile-item"><strong> Số tiền:</strong> <span id="money_tran_view"></span> </div>
+                                    <div class="profile-item"><strong> Loại giao dịch:</strong> <span id="type_tran_view"></span> </div>
+                                    <div class="profile-item"><strong> Trạng thái:</strong> <span id="status_tran_view"></span> </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="modal-footer">
+                        <div type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</div>
+                    </div>
+                </div>
+            </div>
+        </div>

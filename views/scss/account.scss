@@ -1,0 +1,54 @@
+.account {
+    &-list {
+        background-color: #eee;
+        padding: 8px;
+        border-radius: 8px;
+        margin-top: 12px;
+    }
+    &-item {
+        display: grid;
+        grid-template-columns: 4fr 4fr 1fr;
+        background-color: white;
+        padding: 6px 8px;
+        border-radius: 12px;
+        align-items: center;
+        transition: all 0.2s linear;
+        &:hover {
+            background-color: rgba(3, 150, 255, 0.1);
+        }
+    }
+    &-link {
+        text-align: right;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        & a {
+            color: inherit;
+        }
+        & a ion-icon {
+            font-size: 24px;
+        }
+    }
+}
+.tabs {
+    display: flex;
+    background-color: #eee;
+    border-radius: 8px;
+    padding: 5px;
+}
+.tabs .tab-item.active {
+    color: #6a5af9;
+    background-color: white;
+}
+.tabs .tab-item {
+    white-space: nowrap;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #999;
+    font-weight: 500;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: inherit;
+}

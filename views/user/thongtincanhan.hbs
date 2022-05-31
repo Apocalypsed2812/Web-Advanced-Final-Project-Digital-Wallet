@@ -1,0 +1,74 @@
+
+    <div class="container app-containter">
+        {{#if account_cxm}}
+        {{> headers/headerUserTemp}}
+        {{/if}}
+        {{#if account_dxm}}
+        {{> headers/headerUser}}
+        {{/if}}
+        {{#each account}}
+        <section class="profile">
+            <div class="profile-content">
+                <div class="profile-group">
+                    <div class="profile-item"><strong> Username:</strong> {{username}}</div>
+                    <div class="profile-item"><strong> Số điện thoại:</strong> {{phone}}</div>
+                    <div class="profile-item"><strong> Email:</strong> {{email}}</div>
+                    <div class="profile-item"><strong> Tên:</strong> {{name}}</div>
+                    <div class="profile-item"><strong> Ngày sinh:</strong> {{date}}</div>
+                    <div class="profile-item"><strong> Địa chỉ:</strong> {{address}}</div>
+                    <div class="profile-item"><strong> Số dư:</strong> {{change_number balance}} đ</div>
+                    <div class="profile-item"><strong> Trạng thái tài khoản:</strong> {{status}}</div>
+                </div>
+                <div class="profile-group">
+                    <div class="profile-image">
+                        <p>mặt trước CMND</p>
+                        <img src="/images/{{before}}" alt="">
+                    </div>
+                    <div class="profile-image">
+                        <p>mặt sau CMND</p>
+                        <img src="/images/{{after}}" alt="">
+                    </div>
+                </div>
+                {{{addCMND status _id}}}
+                <div class="modal fade" id="add_cmnd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cập Nhật CMND/CCCD</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>CMND của bạn không hợp lệ</p>
+                        <p>Vui lòng cung cấp lại CMND</p>
+                        <form action="/user/updateCMND" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="" class="form-label">Identity card front image</label>
+                                <input type="file" name="before" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Identity card back image</label>
+                                <input type="file" name="after" class="form-input" required>
+                            </div>
+                            <input type="hidden" name="id_account_cmnd" id="id_account_cmnd" value="{{_id}}">
+                            <button class="btn-pri" type="submit" name="btn_register">
+                                Cập nhật
+                            </button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </section>
+        {{/each}}
+    </div>
+    
+    
+    </div>
+
+    

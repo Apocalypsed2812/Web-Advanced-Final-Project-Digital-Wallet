@@ -1,0 +1,96 @@
+<header class="header">
+    <input type="checkbox" id="menu" class="header-checkbox">
+    <div class="header-logo">
+        Banking
+    </div>
+    <div class="header-menu">
+        <label for="menu" class="header-menu-close">
+            <ion-icon name="close"></ion-icon>
+        </label>
+        <ul class="header-list">
+            <li class="header-item">
+                <a href="/user/home" class="header-link">Home</a>
+            </li>
+            <li class="header-item-temp">
+                <a href="" class="header-link-temp">Giao dịch <ion-icon name="caret-down-outline"></ion-icon></a>
+                <ul class="header-sublist">
+                    <li class="header-subitem-temp">
+                        <a href="" class="header-subitem-link-temp">Chuyển tiền</a>
+                    </li>
+                    <li class="header-subitem-temp">
+                        <a href="" class="header-subitem-link-temp">Rút Tiền</a>
+                    </li>
+                    <li class="header-subitem-temp">
+                        <a href="" class="header-subitem-link-temp">Nạp Tiền</a>
+                    </li>
+                    <li class="header-subitem-temp">
+                        <a href="" class="header-subitem-link-temp">Mua card điện thoại</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="header-item">
+                <a href="/user/thongtincanhan" class="header-link-temp">Thông tin cá nhân</a>
+            </li>
+            <li class="header-item-temp">
+                <a href="" class="header-link-temp">Lịch Sử Giao Dịch</a>
+            </li>
+            <li class="header-item">
+                <a href="" data-toggle="modal" data-target="#change-password" class="header-link">Đổi Mật Khẩu</a>
+            </li>
+            <li class="header-item">
+                <a href="/logout" class="header-link-temp">Đăng Xuất</a>
+            </li>
+
+        </ul>
+        <div class="header-option">
+            <ion-icon class="btn-option-header" name="settings-outline"></ion-icon>
+            <ul class="header-option-menu">
+                <li class="header-option-item">
+                    <button>Change password</button>
+                </li>
+                <li class="header-option-item">
+                    <button>Logout</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <label for="menu" class="back-drop"></label>
+    <label for="menu" class="header-btn-menu">
+        <ion-icon name="menu"></ion-icon>
+    </label>
+
+</header>
+
+<div class="modal fade" id="change-password" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Đổi Mật Khẩu</h5>
+				<div type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</div>
+			</div>
+			<form action="/user/change_password" method="post">
+			<div class="modal-body">
+                <div class="form-group">
+                    <label for="oldPassword">Mật Khẩu Cũ</label>
+                    <input type="Password" placeholder="Ol Password" class="form-control" name="oldPassword" required id="oldPassword">
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">Mật Khẩu Mới</label>
+                    <input type="Password" placeholder="New Password" class="form-control" name="newPassword" required id="newPassword">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Xác Nhận Mật Khẩu Mới</label>
+                    <input type="Password" placeholder="Confirm Password" name="confirmPassword" required id="confirmPassword" class="form-control">
+                </div>	
+			</div>
+			<div class="modal-footer">
+				<div type="button" class="btn btn-secondary" data-dismiss="modal">Close</div>
+				<button type="submit" class="btn btn-primary">Change</button>
+			</div>
+			</form> 
+		</div>
+	</div>
+</div>

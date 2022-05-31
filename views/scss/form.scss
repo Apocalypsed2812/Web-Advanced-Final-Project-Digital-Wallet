@@ -1,0 +1,29 @@
+.form {
+    &-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 4px;
+        margin-top: 12px;
+    }
+    &-label {
+        width: 100%;
+        color: #444;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    &-input {
+        width: 100%;
+        border-radius: 6px;
+        border: 2px solid transparent;
+        padding: 8px 16px;
+        transition: all 0.2s linear;
+        font-size: 16px;
+        background-color: $grayColor;
+        &:focus {
+            background-color: white;
+            border: 2px solid $primaryColor;
+        }
+    }
+}

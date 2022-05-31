@@ -1,0 +1,90 @@
+<div class="container app-containter">
+    {{#if account_cxm}}
+    {{> headers/headerUserTemp}}
+    {{/if}}
+    {{#if account_dxm}}
+    {{> headers/headerUser}}
+    {{/if}}
+    <section class="home">
+        <div class="home-left">
+            <div class="home-header">
+                <div class="home-header-content">
+                    <h1>Easy to manage my account and Transactions</h1>
+                    <p>View your detail transaction here</p>
+                    <a class="btn-1 btn" href="/user/lichsugiaodichnap">View Tracsactions History</a>
+                </div>
+                <div class="home-header-image">
+                    <img srcset="../images/card.png 2x" alt="">
+                </div>
+            </div>
+            <div class="home-list">
+                <a href="/user/naptien" class="home-item">
+                    <h6>Nạp tiền</h6>
+                    <ion-icon name="archive-outline"></ion-icon>
+                </a>
+                <a href="/user/ruttien" class="home-item">
+                    <h6>Rút tiền</h6>
+                    <ion-icon name="enter-outline"></ion-icon>
+                </a>
+                <a href="/user/chuyentien" class="home-item">
+                    <h6>Chuyển tiền</h6>
+                    <ion-icon name="swap-horizontal-outline"></ion-icon>
+                </a>
+                <a href="/user/muacard" class="home-item">
+                    <h6>Mua Card</h6>
+                    <ion-icon name="wallet-outline"></ion-icon>
+                </a>
+            </div>
+        </div>
+        <div class="home-right">
+            <h3 class="mb-2 home-right-title">My cards</h3>
+            <div class="home-right-container">
+                <div class="home-mycard">
+                    {{#each account}}
+                    <h3 class="home-mycard-title">Phone number</h3>
+                    <h4 class="home-mycard-content">{{phone}}</h4>
+                    <h3 class="home-mycard-title">Balance</h3>
+                    <h1 class="home-mycard-content">{{change_number balance}} VNĐ</h1>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="buy-card">
+        {{#if card_content}}
+            <input type= "hidden" id="card_content" value="{{card_content_edit}}">
+            <input type= "hidden" id="card_content_content" value="{{card_content}}">
+        {{/if}}
+    </div>  
+</div>
+<div id="display_card_content" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Hiển thị thẻ mới mua</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                Thẻ của bạn mới mua là: <strong id="content_card"></strong>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Đóng</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    let btnToggleOption = document.querySelector('.btn-option-header')
+    btnToggleOption.onclick = (e) => {
+        let parent = btnToggleOption.parentNode
+        let menu = parent.querySelector('.header-option-menu')
+        menu.classList.toggle("active")
+    }
+</script>

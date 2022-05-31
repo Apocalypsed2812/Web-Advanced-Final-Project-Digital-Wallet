@@ -1,0 +1,94 @@
+
+    <div class="container app-containter">
+        {{#if account_cxm}}
+        {{> headers/headerUserTemp}}
+        {{/if}}
+        {{#if account_dxm}}
+        {{> headers/headerUser}}
+        {{/if}}
+        
+        <section class="account">
+            <h1>Lịch sử giao dịch</h1>
+            <div class="tabs5">
+                <a href="/user/lichsugiaodichnap" class="tab-item">Nạp tiền</a>
+                <a href="/user/lichsugiaodichrut" class="tab-item">Rút tiền</a>
+                <a href="/user/lichsugiaodichchuyen" class="tab-item">Chuyển tiền</a>
+                <a href="/user/lichsugiaodichmua" class="tab-item active">Mua thẻ</a>
+            </div>
+            <div class="table">
+                <div class="table__header">
+                    <span>
+                        Thời gian
+                    </span>
+                    <span>
+                        Nhà mạng
+                    </span>
+                    <span>
+                        Mệnh giá
+                    </span>
+                    <span>
+                        Số Lượng
+                    </span>
+                    <span>
+                        Trạng thái
+                    </span>
+                    <span>
+                        Thành Tiền
+                    </span>
+                </div>
+                <div class="table__list">
+                    {{#each transaction}}
+                    <div class="table__item  viewMuaCard" data-content="{{content}}" data-quantity="{{quantity}}" data-operator="{{operator}}" data-date="{{format_date createdAt}}" data-id="{{_id}}" data-money="{{mul denomination quantity}}" data-type="{{type}}" data-status="{{status}}" data-number_card="{{number_card}}" data-denomination="{{change_number denomination}}">
+                        <span>{{format_date createdAt}}</span>
+                        <span>{{operator}}</span>
+                        <span>{{change_number denomination}} vnđ</span>
+                        <span>{{quantity}}</span>
+                        <span>
+                            <span class="status status__success">Thành Công</span>
+                        </span>
+                        <span class="amount amount__decrease">- {{mul denomination quantity}} vnđ</span>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+        </section>
+
+    <div id="view-muacard" class="modal fade" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xem lịch sử giao dịch</h5>
+                    <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <section class="profile">
+                        <div class="profile-content">
+                            <div class="profile-group">
+                                <div class="profile-item"><strong> Nhà mạng:</strong> <span id="operator_tran_view_buy"></span> </div>
+                                <div class="profile-item"><strong> Số lượng:</strong> <span id="quantity_tran_view_buy"></span> </div>
+                                <div class="profile-item"><strong> Mệnh giá:</strong> <span id="denomination_tran_view_buy"></span> </div>
+                                <div class="profile-item"><strong> Thành tiền:</strong> <span id="money_tran_view_buy"></span> </div>
+                                <div class="profile-item"><strong> Số thẻ đã mua:</strong> <span id="content_tran_view_buy"></span> </div>
+                                <div class="profile-item"><strong> Loại giao dịch:</strong> <span id="type_tran_view_buy"></span> </div>
+                                <div class="profile-item"><strong> Trạng thái:</strong> <span id="status_tran_view_buy"></span> </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <div type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let btnToggleOption = document.querySelector('.btn-option-header')
+        btnToggleOption.onclick = (e) => {
+            let parent = btnToggleOption.parentNode
+            let menu = parent.querySelector('.header-option-menu')
+            menu.classList.toggle("active")
+        }
+    </script>

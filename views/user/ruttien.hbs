@@ -1,0 +1,43 @@
+
+    <div class="container app-containter">
+        {{#if account_cxm}}
+        {{> headers/headerUserTemp}}
+        {{/if}}
+        {{#if account_dxm}}
+        {{> headers/headerUser}}
+        {{/if}}
+        <section class="banking">
+            <form class="banking-form" action="">
+                <div class="form-group">
+                    <label for="" class="form-label">Số thẻ</label>
+                    <input type="text" class="form-input" placeholder="Card number" name="card_number_out" id="card_number_out">
+                </div>
+                <div class="form-group">
+                    <label for="" class="form-label">Ngày hết hạn</label>
+                    <input type="date" class="form-input" placeholder="DD/MM/YYYY" name="date_end_out" id="date_end_out">
+                </div>
+                <div class="form-group">
+                    <label for="" class="form-label">Mã CVV</label>
+                    <input type="text" class="form-input" placeholder="CVV" name="cvv_code_out" id="cvv_code_out">
+                </div>
+                <div class="form-group">
+                    <label for="" class="form-label">Ghi chú</label>
+                    <input type="text" class="form-input" placeholder="Note" name="note_out" id="note_out">
+                </div>
+                <div class="form-group">
+                    <label for="" class="form-label">Số tiền</label>
+                    <input type="number" class="form-input" placeholder="Money" name="money_out" id="money_out">
+                </div>
+                <button class="btn-pri" id="btn_ruttien">Xác nhận</button>
+            </form>
+        </section>
+
+    </div>
+    <script>
+        let btnToggleOption = document.querySelector('.btn-option-header')
+        btnToggleOption.onclick = (e) => {
+            let parent = btnToggleOption.parentNode
+            let menu = parent.querySelector('.header-option-menu')
+            menu.classList.toggle("active")
+        }
+    </script>

@@ -1,0 +1,40 @@
+.profile {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-content {
+        width: 100%;
+        max-width: 800px;
+        padding: 24px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 24px;
+        border-radius: 8px;
+    }
+    &-image {
+        & img {
+            max-width: 50%;
+        }
+    }
+    &-group {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    &-item {
+        margin: 12px 0;
+    }
+}
+
+@media (max-width: 844px) {
+    .profile {
+        &-content {
+            width: 100%;
+            max-width: 95%;
+            grid-template-columns: 1fr;
+        }
+    }
+}

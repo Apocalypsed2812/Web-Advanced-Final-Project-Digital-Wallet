@@ -1,0 +1,132 @@
+
+    <div class="container app-containter">
+        {{> headers/headerAdmin}}
+        <section class="account">
+            <h1>Phê duyệt giao dịch</h1>
+            <div class="tabs5">
+                <a href="/admin/pheduyetruttien" class="tab-item active">Rút tiền</a>
+                <a href="/admin/pheduyetchuyentien" class="tab-item">Chuyển tiền</a>
+            </div>
+            <div class="table">
+                <div class="table__header">
+                    <span>
+                        Người rút
+                    </span>
+                    <span>
+                        Ghi chú
+                    </span>
+                    <span>
+                        Thời gian
+                    </span>
+                    <span>
+                        Số Tiền
+                    </span>
+                </div>
+                <div class="table__list">
+                    {{#each transaction}}
+                    <div class="table__item viewPheDuyetRutTien" data-id="{{_id}}" data-money="{{money}}" data-type="{{type}}" data-status="{{status}}" data-number_card="{{number_card}}" data-note="{{note}}" data-total="{{total}}" data-phone="{{phone}}">
+                        <span>{{phone}}</span>
+                        <span>{{note}}</span>
+                        <span>{{format_date createdAt}}</span>
+                        {{!-- <span>{{note}}</span> --}}
+                        <span class="amount">{{ change_number money}} vnđ</span>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </section>
+
+        <div id="view-pheduyet-ruttien" class="modal fade" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Xem lịch sử giao dịch</h5>
+                        <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <section class="profile">
+                            <div class="profile-content">
+                                <div class="profile-group">
+                                    <div class="profile-item"><strong> Số thẻ:</strong> <span id="number_card_tran_view"></span> </div>
+                                    <div class="profile-item"><strong> Số tiền:</strong> <span id="money_tran_view"></span> </div>
+                                    <div class="profile-item"><strong> Loại giao dịch:</strong> <span id="type_tran_view"></span> </div>
+                                    <div class="profile-item"><strong> Trạng thái:</strong> <span id="status_tran_view"></span> </div>
+                                    <div class="profile-item"><strong> Ghi chú:</strong> <span id="note_tran_view"></span> </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="modal-footer">
+                        <div type="button" class="btn btn-outline-success" data-dismiss="modal" id="btn_accept_rut">Đồng ý</div>
+                        <div type="button" class="btn btn-outline-danger" data-dismiss="modal" id="btn_denied_rut">Từ chối</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="confirm-accept-rut" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Xác nhận đồng ý rút tiền</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Bạn có chắc rằng muốn cho tài khoản <strong id="account-name-rut"></strong> rút tiền trên 5 triệu?
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <input type= "hidden" name="phone_rut" id="phone_rut" value="">
+                    <input type= "hidden" name="total_rut" id="total_rut" value="">
+                    <button data-id= "???" id="btn-rut-confirm" type="button" class="btn btn-primary">Đồng ý</button>
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Đóng</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="confirm-denied-rut" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Xác nhận từ chối rút tiền</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Bạn có chắc rằng muốn từ chối tài khoản <strong id="account-name-rut"></strong> rút tiền trên 5 triệu?
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <input type= "hidden" name="phone_rut" id="phone_rut" value="">
+                    <input type= "hidden" name="total_rut" id="total_rut" value="">
+                    <button data-id= "???" id="btn-rut-confirm-denied" type="button" class="btn btn-primary">Đồng ý</button>
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Đóng</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let btnToggleOption = document.querySelector('.btn-option-header')
+        btnToggleOption.onclick = (e) => {
+            let parent = btnToggleOption.parentNode
+            let menu = parent.querySelector('.header-option-menu')
+            menu.classList.toggle("active")
+        }
+    </script>

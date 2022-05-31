@@ -1,0 +1,28 @@
+.history {
+    &-content {
+    }
+    &-list {
+    }
+    &-item {
+        padding: 8px 24px;
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr 1fr;
+        border-bottom: 2px solid $grayColor;
+        &-content {
+            flex: 1;
+        }
+        &-main {
+            color: #2b2e45;
+            &.inscrease {
+                font-weight: bold;
+
+                color: #28c76f;
+            }
+            &.descrease {
+                font-weight: bold;
+
+                color: #ea5456;
+            }
+        }
+    }
+}
